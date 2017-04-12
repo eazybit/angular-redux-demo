@@ -1,0 +1,13 @@
+<h1>
+  {{title}}
+</h1>
+<div class="message-container container">
+  <div>Title: {{_title$ | async}}</div>
+  <button (click)="changeTitle()">Change Title</button>
+  <button (click)="resetTitle()">Reset Title</button>
+</div>
+<div class="counter-container container">
+  <div>Counter: {{_counter$ | async}}</div>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+</div>
