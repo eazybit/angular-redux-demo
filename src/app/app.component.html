@@ -11,3 +11,7 @@
   <button (click)="increment()">Increment</button>
   <button (click)="decrement()">Decrement</button>
 </div>
+<div class="ping-container container">
+  <div>Pinging: {{(_ping$ | async) ? 'yes' : 'no' }}</div>
+  <button (click)="startPinging()">Start</button>
+</div>

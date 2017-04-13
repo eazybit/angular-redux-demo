@@ -3,10 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
-import { IAppState, rootReducer, InitialState } from './store';
-import { createStore } from 'redux';
+import { createEpicMiddleware, combineEpics } from 'redux-observable';
+import { applyMiddleware, compose } from 'redux';
 
 import { AppComponent } from './app.component';
+import { IAppState, InitialState } from './store';
+import { rootReducer } from './reducers';
+import { rootEpic } from './epics';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {
   constructor(ngRedux: NgRedux<IAppState>) {
-    ngRedux.configureStore(rootReducer, InitialState);
+
+    let middleware = [createEpicMiddleware(rootEpic)];
+
+    ngRedux.configureStore(rootReducer, InitialState, middleware);
   }
 }
