@@ -14,12 +14,12 @@ export class AppComponent {
   title = 'Yu\'s Angular Redux Demo!';
   private _counter$: Observable<number>;
   private _title$: Observable<string>;
-  private _ping$: Observable<string>;
+  private _ping$: Observable<boolean>;
 
   constructor(private _ngRedux: NgRedux<IAppState>) {
     this._counter$ = this._ngRedux.select<number>(['counter']);
     this._title$ = this._ngRedux.select<string>(['title']);
-    this._ping$ = this._ngRedux.select<string>(['ping']);
+    this._ping$ = this._ngRedux.select<boolean>(['ping']);
   }
 
   increment() {
